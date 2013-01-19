@@ -144,29 +144,6 @@ def populateBoard(board,piecesAvailable,(x,y),i):
     else: 
         return populateBoard(board.copy(),list(piecesAvailable),(x,y),i+1)
 
-#   print (x,y)
-#   # Put new piece, the ith piece from the list of available pieces, on the board at position x,y
-#   board[2*y:2*y+2,2*x:2*x+2] = piecesAvailable[i]
-# 
-#   # Check if this passes the requirements
-#   if checker(board):
-#     piecesAvailable.pop(i)
-#     # If this succeeds and completes the board, then print success!
-#     if not piecesAvailable:
-#       print "SUCCESS!!!!"
-#       print board
-#       return True
-#     # If it succeeds but doesn't complete the board, then move to next empty space and populate
-#     # print "x factor",int((x==1 or x==4) and (y==1 or y==4))
-#     # print "y factor",int(x==5)
-#     (x_new,y_new) = ((x + 1 + int((x==0 or x==3) and (y==1 or y==4)))%6,y+int(x==5))
-#     # print len(piecesAvailable)
-#     # print board
-#     return populateBoard(board,piecesAvailable,(x_new,y_new),0)
-#   else:
-#     if i != len(piecesAvailable)-1:
-#       return populateBoard(board,piecesAvailable,(x,y),i+1)
-
 print len(pieces)
 
 print populateBoard(board,pieces,(0,0),0) 
