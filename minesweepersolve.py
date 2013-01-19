@@ -124,6 +124,7 @@ print board
 
 # Populate Board
 def populateBoard(board,piecesAvailable,(x,y),i):
+  oldboard = board
   print i
   print board
   # print (x,y)
@@ -143,10 +144,11 @@ def populateBoard(board,piecesAvailable,(x,y),i):
     (x_new,y_new) = ((x + 1 + int((x==0 or x==3) and (y==1 or y==4)))%6,y+int(x==5))
     # print len(piecesAvailable)
     # print board
-    return populateBoard(board,piecesAvailable[1:],(x_new,y_new),0) or populateBoard(board,piecesAvailable,(x,y),i+1)
+    return populateBoard(board,piecesAvailable[1:],(x_new,y_new),0) or populateBoard(oldboard,piecesAvailable,(x,y),i+1)
+  # If it doesn't pass, then try the next available piece
   else:
     if i != len(piecesAvailable)-1:
-      return populateBoard(board,piecesAvailable,(x,y),i+1)
+      return populateBoard(oldboard,piecesAvailable,(x,y),i+1)
     return False
   print "YOU SHOULDNT SEE THIS!?"
   pass
