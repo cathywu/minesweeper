@@ -100,6 +100,8 @@ pieces = [[[m,8],
            [2,m]],
           [[2,2],
            [2,m]],
+          [[m,m],
+           [2,4]],
           [[3,3],
            [m,m]],
           [[m,m],
@@ -127,7 +129,7 @@ def populateBoard(board,piecesAvailable,(x,y),i):
   board[2*y:2*y+2,2*x:2*x+2] = piecesAvailable[i]
 
   # Check if this passes the requirements
-  if True or checker(board):
+  if checker(board):
     piecesAvailable.pop(i)
     # If this succeeds and completes the board, then print success!
     if not piecesAvailable:
@@ -135,15 +137,17 @@ def populateBoard(board,piecesAvailable,(x,y),i):
       print board
       pass
     # If it succeeds but doesn't complete the board, then move to next empty space and populate
-    print "x factor",int((x==1 or x==4) and (y==1 or y==4))
-    print "y factor",int(x==5)
-    (x_new,y_new) = ((x + 1 + int((x==1 or x==4) and (y==1 or y==4)))%6,y+int(x==5))
-    print len(piecesAvailable)
-    print board
+    # print "x factor",int((x==1 or x==4) and (y==1 or y==4))
+    # print "y factor",int(x==5)
+    (x_new,y_new) = ((x + 1 + int((x==0 or x==3) and (y==1 or y==4)))%6,y+int(x==5))
+    # print len(piecesAvailable)
+    # print board
     populateBoard(board,piecesAvailable,(x_new,y_new),0)
   else:
     if i != len(piecesAvailable)-1:
       populateBoard(board,piecesAvailable,(x,y),i+1)
   pass
+
+print len(pieces)
 
 populateBoard(board,pieces,(0,0),0) 
